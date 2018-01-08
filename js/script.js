@@ -46,14 +46,23 @@ function getRandomQuote() {
 function printQuote() {
   let printQuote = getRandomQuote();
   if ( printQuote.date !== "" ) { // Checks to see if there's value in citation property
-    document.getElementById('quote-box').innerHTML =
-    '<p class="quote">' + printQuote.quote + '</p>' + '<p class="source">' + printQuote.source + '<span class="citation">' + printQuote.citation + '</span>' + '<span class="year">' + printQuote.date + '</span></p>';
+    document.getElementById('quote-box').innerHTML = `
+    <p class="quote">${printQuote.quote}</p>
+    <p class="source">${printQuote.source}
+    <span class="citation">${printQuote.citation}</span>
+    <span class="year">${printQuote.date}</span></p>
+    `;
   } else if ( printQuote.citation !== "" ) {
-    document.getElementById('quote-box').innerHTML =
-    '<p class="quote">' + printQuote.quote + '</p>' + '<p class="source">' + printQuote.source + '<span class="citation">' + printQuote.citation + '</span></p>';
+    document.getElementById('quote-box').innerHTML =`
+    <p class="quote">${printQuote.quote}</p>
+    <p class="source">${printQuote.source}
+    <span class="citation">${printQuote.citation}</span></p>
+    `;
   } else {
-    document.getElementById('quote-box').innerHTML =
-    '<p class="quote">' + printQuote.quote + '</p>' + '<p class="source">' + printQuote.source + '</p>';
+    document.getElementById('quote-box').innerHTML =`
+    <p class="quote">${printQuote.quote}</p>
+    <p class="source">${printQuote.source}</p>
+    `;
   }
   document.getElementById('randomColor').style.backgroundColor = random_bg_color();
 }
