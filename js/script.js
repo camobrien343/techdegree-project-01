@@ -8,7 +8,7 @@ Random Quote Generator
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
 // Global variables
-var quotes = [ {
+let quotes = [ {
   quote : "The most beautiful experience we can have is the mysterious. It is the fundamental emotion that stands at the cradle of true art and true science.",
   source : "Albert Einstein",
   citation : "The World As I See It",
@@ -38,13 +38,13 @@ var quotes = [ {
 
 // Random Quote function created using random object in quotes array
 function getRandomQuote() {
-  var randomNumber = quotes[Math.floor(Math.random()*quotes.length)];
+  let randomNumber = quotes[Math.floor(Math.random()*quotes.length)];
   return randomNumber;
 }
 
 // Function to print random quote 
 function printQuote() {
-  var printQuote = getRandomQuote();
+  let printQuote = getRandomQuote();
   if ( printQuote.date !== "" ) { // Checks to see if there's value in citation property
     document.getElementById('quote-box').innerHTML =
     '<p class="quote">' + printQuote.quote + '</p>' + '<p class="source">' + printQuote.source + '<span class="citation">' + printQuote.citation + '</span>' + '<span class="year">' + printQuote.date + '</span></p>';
@@ -55,7 +55,19 @@ function printQuote() {
     document.getElementById('quote-box').innerHTML =
     '<p class="quote">' + printQuote.quote + '</p>' + '<p class="source">' + printQuote.source + '</p>';
   }
+  document.getElementById('randomColor').style.backgroundColor = random_bg_color();
 }
+
+function random_bg_color() {
+    let x = Math.floor(Math.random() * 256);
+    let y = Math.floor(Math.random() * 256);
+    let z = Math.floor(Math.random() * 256);
+    let randomColor = "rgb(" + x + "," + y + "," + z + ")";
+    console.log(randomColor);
+  
+    document.body.style.background = randomColor;
+    }
+
 
 // Calls the printQuote function 
 printQuote();
